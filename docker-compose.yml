@@ -1,0 +1,7 @@
+services:
+  autopublisher:
+    image: "ghcr.io/wissididom/antiscam"
+    restart: unless-stopped
+    environment:
+      NODE_ENV: production
+    env_file: .env
