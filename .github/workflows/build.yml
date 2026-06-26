@@ -25,9 +25,12 @@ jobs:
       - name: Install dependencies
         run: |
           deno install
-      - name: Compile
+      - name: Compile (Windows)
         run: |
-          deno compile -EN main.ts
+          deno compile -EN --output AntiScam-${{ matrix.os }}.exe main.ts
+      - name: Compile (Ubuntu and Mac)
+        run: |
+          deno compile -EN --output AntiScam-${{ matrix.os }} main.ts
       - name: Upload artifact (Windows)
         if: startsWith(matrix.os, 'windows')
         uses: actions/upload-artifact@v7
