@@ -26,9 +26,11 @@ jobs:
         run: |
           deno install
       - name: Compile (Windows)
+        if: startsWith(matrix.os, 'windows')
         run: |
           deno compile -EN --output AntiScam-${{ matrix.os }}.exe main.ts
       - name: Compile (Ubuntu and Mac)
+        if: startsWith(matrix.os, 'ubuntu') || startsWith(matrix.os, 'macos')
         run: |
           deno compile -EN --output AntiScam-${{ matrix.os }} main.ts
       - name: Upload artifact (Windows)
